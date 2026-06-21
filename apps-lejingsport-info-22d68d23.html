@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>乐竞体育 · 从一场运动开始</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fce6d6 0%, #f3d5c2 40%, #e8c8ae 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem 3rem;
+            line-height: 1.6;
+            color: #2c241e;
+        }
+
+        .page-wrap {
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        /* 主卡片容器 — 暖白柔影 */
+        .main-card {
+            background: #fffcf8;
+            border-radius: 40px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 20px 40px -12px rgba(140, 80, 40, 0.20),
+                        0 8px 16px -4px rgba(0,0,0,0.04);
+            backdrop-filter: blur(2px);
+            transition: all 0.15s ease;
+        }
+
+        /* 视觉hero区 */
+        .hero {
+            text-align: center;
+            padding: 0.5rem 0 2rem;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: #f5e1d2;
+            color: #7a4d31;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #392d24;
+            background: linear-gradient(135deg, #462f21, #6f4c33);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0.5rem auto 0;
+            font-size: 1.1rem;
+            color: #5a4638;
+        }
+
+        /* 两栏卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+            margin: 2.5rem 0 1.8rem;
+        }
+
+        .info-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 1.8rem 1.6rem 2rem;
+            box-shadow: 0 4px 12px rgba(160, 100, 55, 0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid rgba(230, 190, 165, 0.20);
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px -8px rgba(120, 70, 40, 0.12);
+        }
+
+        .info-card .emoji-icon {
+            display: inline-block;
+            background: #f5e3d6;
+            width: 46px;
+            height: 46px;
+            line-height: 46px;
+            text-align: center;
+            border-radius: 16px;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-card h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #392d24;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card p {
+            font-size: 0.95rem;
+            color: #4f3e31;
+        }
+
+        .highlight-link {
+            margin: 1.8rem 0 1.2rem;
+            padding: 1.5rem;
+            background: #faf1ea;
+            border-radius: 30px;
+            text-align: center;
+            border: 1px solid #eddccc;
+        }
+
+        .highlight-link .sentence {
+            font-size: 1.05rem;
+            color: #3b2e25;
+        }
+
+        .highlight-link a {
+            color: #7b4d31;
+            font-weight: 600;
+            text-decoration: none;
+            background: #ffffff;
+            padding: 0.3rem 1.2rem;
+            border-radius: 60px;
+            display: inline-block;
+            border: 1px solid #dbbc9f;
+            transition: background 0.2s, border-color 0.2s;
+            white-space: nowrap;
+            margin: 0 0.15rem;
+            font-size: 1rem;
+        }
+
+        .highlight-link a:hover {
+            background: #f5e0cf;
+            border-color: #b4896a;
+        }
+
+        .faq-mini {
+            margin-top: 2.5rem;
+            border-top: 1px solid #eddccc;
+            padding-top: 2rem;
+        }
+
+        .faq-mini details {
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed #ebd6c6;
+            padding-bottom: 0.8rem;
+        }
+
+        .faq-mini summary {
+            font-weight: 600;
+            color: #3c2f27;
+            cursor: pointer;
+            font-size: 0.95rem;
+            padding: 0.2rem 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .faq-mini summary::before {
+            content: "▸";
+            margin-right: 8px;
+            color: #a07659;
+            font-size: 1rem;
+        }
+
+        .faq-mini details[open] summary::before {
+            content: "▾";
+        }
+
+        .faq-mini p {
+            font-size: 0.9rem;
+            color: #4f3f32;
+            padding: 0.5rem 0 0.2rem 1.6rem;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #846e5b;
+            text-align: center;
+            border-top: 1px solid #e7d5c4;
+            padding-top: 1.8rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            body {
+                padding: 1.2rem 0.8rem;
+            }
+            .main-card {
+                padding: 2rem 1.2rem;
+                border-radius: 32px;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+            .highlight-link .sentence {
+                display: block;
+                margin-bottom: 0.6rem;
+            }
+            .highlight-link a {
+                display: block;
+                margin: 0.4rem auto 0;
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrap">
+    <div class="main-card">
+        <!-- hero -->
+        <div class="hero">
+            <span class="badge">⚡ 运动 · 轻生活</span>
+            <h1>乐竞体育</h1>
+            <p>一个便于快速识别和使用的体育站点，围绕赛事、训练、社区信息组织内容。<br>不用复杂判断，一眼知道这里提供什么。</p>
+        </div>
+
+        <!-- 信息卡片区 -->
+        <div class="card-grid">
+            <div class="info-card">
+                <div class="emoji-icon">🏀</div>
+                <h2>比赛动态 · 一屏概览</h2>
+                <p>聚合近期赛果、赛程与热门运动资讯。卡片式布局让信息层级清晰，适合想快速掌握动态的日常用户。</p>
+            </div>
+            <div class="info-card">
+                <div class="emoji-icon">🧘</div>
+                <h2>训练参考 · 实用向</h2>
+                <p>提供基于运动科学的基础训练思路与动作提示，不贩卖焦虑，只给可执行的参考内容。</p>
+            </div>
+            <div class="info-card">
+                <div class="emoji-icon">👥</div>
+                <h2>适合这些人群</h2>
+                <p>运动爱好者、业余选手、赛事观众、想培养运动习惯但需要信息入口的人。界面温和，不喧哗。</p>
+            </div>
+        </div>
+
+        <!-- 自然链接段落 (严格文本) -->
+        <div class="highlight-link">
+            <span class="sentence">
+                如果你想进一步了解这个平台，可以看看 
+                <a href="https://apps-lejingsport.com">乐竞体育</a> 
+                提供哪些内容和服务。整体风格偏务实，不绕弯子。
+            </span>
+        </div>
+
+        <!-- FAQ摘要 / 补充说明 -->
+        <div class="faq-mini">
+            <details>
+                <summary>这个网站主要用来做什么？</summary>
+                <p>它围绕体育赛事与日常运动整理信息，包括赛程、基础训练指南和社群讨论等。没有复杂的付费墙与诱导内容，更像一个信息聚合参考。</p>
+            </details>
+            <details>
+                <summary>内容更新频率如何？</summary>
+                <p>根据赛季与热点保持一定节奏，非日更轰炸。信息以实用为主，倾向让用户自己判断和选择。</p>
+            </details>
+            <details>
+                <summary>我需要注册才能浏览吗？</summary>
+                <p>大部分内容可以直接查看。部分互动或个性化功能可能涉及注册，但浏览信息不需要先交个人信息。</p>
+            </details>
+        </div>
+
+        <!-- 轻量底部 -->
+        <div class="footer-note">
+            <span>🌱 基于生活化视角 · 信息卡片式呈现</span><br>
+            <span style="opacity: 0.5;">设计方向：暖色渐变 · 白色卡片 · 圆角链接</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
