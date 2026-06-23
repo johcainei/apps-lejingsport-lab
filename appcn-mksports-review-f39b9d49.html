@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MK体育 · 深度专栏</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans SC", sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fce5c8 0%, #f7d6b0 50%, #f2c99b 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.2rem;
+            line-height: 1.7;
+            color: #2f2420;
+        }
+
+        .paper {
+            max-width: 760px;
+            width: 100%;
+            background: #fffcf7;
+            border-radius: 36px 12px 36px 12px;
+            box-shadow: 0 18px 40px -12px rgba(110, 65, 30, 0.28);
+            padding: 2.8rem 2.4rem;
+            transition: box-shadow 0.2s;
+        }
+
+        h1 {
+            font-size: 2.1rem;
+            font-weight: 560;
+            letter-spacing: -0.02em;
+            color: #4d2e1e;
+            margin-bottom: 0.6rem;
+            line-height: 1.2;
+            border-left: 6px solid #d9975c;
+            padding-left: 1rem;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #7a5a44;
+            margin-top: -0.2rem;
+            margin-bottom: 2rem;
+            padding-left: 1.6rem;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            border-bottom: 1px dashed #e7cfb8;
+            padding-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 520;
+            color: #593a28;
+            margin: 2rem 0 0.8rem 0;
+            display: inline-block;
+            background: linear-gradient(to right, #f0dac6, transparent 80%);
+            padding: 0.1rem 1rem 0.1rem 0.4rem;
+            border-radius: 0 8px 8px 0;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #362b25;
+        }
+
+        .inset-quote {
+            background: #f8efe7;
+            border-left: 5px solid #c5814b;
+            padding: 1rem 1.5rem;
+            margin: 1.6rem 0;
+            border-radius: 0 16px 16px 0;
+            font-style: normal;
+            color: #4a352a;
+            font-size: 0.96rem;
+            box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+        }
+
+        .inset-quote::before {
+            content: "📌 提示 ";
+            font-weight: 500;
+            color: #9f6b3b;
+            margin-right: 0.3rem;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.6rem;
+            margin: 1.2rem 0 1.8rem 0;
+            padding-left: 0.2rem;
+        }
+
+        .feature-item {
+            flex: 1 1 180px;
+            background: #faf3eb;
+            padding: 0.7rem 1rem 0.7rem 1.8rem;
+            border-radius: 40px 12px 12px 40px;
+            font-weight: 440;
+            color: #3f2b20;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .feature-item::before {
+            content: "•";
+            position: absolute;
+            left: 12px;
+            color: #b67d4e;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .btn-link {
+            display: inline-block;
+            background: #d28d55;
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1.8rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            transition: all 0.2s ease;
+            border: 1px solid #d28d55;
+            margin: 0.3rem 0.2rem;
+            box-shadow: 0 4px 8px -4px rgba(160, 90, 40, 0.25);
+        }
+
+        .btn-link:hover {
+            background: #bb7a44;
+            border-color: #bb7a44;
+            box-shadow: 0 6px 14px -4px #a36b3b;
+            transform: translateY(-1px);
+        }
+
+        .btn-link-outline {
+            background: transparent;
+            color: #6f422b;
+            border: 1px solid #d9a87b;
+            box-shadow: none;
+            margin-left: 0.6rem;
+        }
+
+        .btn-link-outline:hover {
+            background: #f1dfcf;
+            color: #4a2a19;
+            border-color: #b97f52;
+            box-shadow: none;
+            transform: translateY(-1px);
+        }
+
+        .faq-mini {
+            margin: 2rem 0 0.6rem 0;
+            background: #f6ede4;
+            border-radius: 24px;
+            padding: 1.4rem 1.8rem;
+        }
+
+        .faq-mini summary {
+            font-weight: 540;
+            cursor: pointer;
+            color: #4d3020;
+            padding: 0.3rem 0;
+            font-size: 1.05rem;
+        }
+
+        .faq-mini p {
+            margin: 0.6rem 0 0 0;
+            font-size: 0.95rem;
+        }
+
+        .tagline {
+            margin-top: 2.2rem;
+            text-align: right;
+            font-size: 0.95rem;
+            color: #6d5240;
+            border-top: 1px solid #e1cebc;
+            padding-top: 1.2rem;
+            font-weight: 430;
+        }
+
+        a {
+            color: #965f34;
+            text-decoration: none;
+            font-weight: 480;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.15s;
+        }
+
+        a:hover {
+            border-bottom-color: #b97f52;
+        }
+
+        .inline-link {
+            border-bottom: 2px solid #dbaa7a;
+        }
+
+        .footer-note {
+            margin-top: 1.8rem;
+            font-size: 0.85rem;
+            color: #7b6251;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 500px) {
+            .paper {
+                padding: 1.8rem 1.2rem;
+            }
+            h1 {
+                font-size: 1.7rem;
+                padding-left: 0.7rem;
+            }
+            .feature-grid {
+                flex-direction: column;
+            }
+            .feature-item {
+                flex: 1 1 auto;
+            }
+            .btn-link-outline {
+                margin-left: 0;
+                margin-top: 0.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="paper">
+        <h1>再次打开，如同翻阅一份常驻简报</h1>
+        <div class="subhead">方向 · 聚合 · 可回访</div>
+
+        <p>
+            信息流更替太快，真正值得保留的站点需要被重新找到。如果你之前曾短暂浏览过 
+            <a href="https://appcn-mksports.com" class="inline-link">MK体育</a>， 
+            那么这一页可以作为你再次回来的索引。不必收藏太多书签，只需记住这个简洁的入口—— 
+            聚合内容、专栏式叙述，适合在需要浏览体育资讯与动态时直接回访。
+        </p>
+
+        <p>
+            站内内容围绕赛事观察、训练逻辑和行业视角展开，不堆砌无效链接，也不制造信息噪音。 
+            每一次访问都是对之前阅读的延续，而不是从零开始的迷宫。
+        </p>
+
+        <div class="section-title">📋 为什么值得保留在常用列表</div>
+
+        <div class="feature-grid">
+            <div class="feature-item">阅读节奏自控 · 无弹窗干扰</div>
+            <div class="feature-item">专题式更新 · 非碎片化推送</div>
+            <div class="feature-item">结构稳定 · 适合多端浏览</div>
+            <div class="feature-item">内容可回溯 · 无需重复查找</div>
+        </div>
+
+        <div class="inset-quote">
+            再次访问即默认你对体育内容已有基础判断力。这里只提供信息增量，不做反复引导。
+        </div>
+
+        <p>
+            在信息过载的时代，一个干净且保持更新节奏的站点是稀缺资源。<a href="https://appcn-mksports.com">MK体育</a> 
+            并未试图抓住所有目光，而是更侧重内容的完整度与可读性。如果你习惯深度阅读而非标题流， 
+            这里或许正好契合你的浏览习惯。
+        </p>
+
+        <div class="section-title">🔎 场景参考</div>
+        <p>
+            早晨通勤快速浏览前一日赛况；午休时阅读一篇专栏分析；周末整理收藏夹时 
+            顺手点开看看是否有新的视角 —— 这些都是我们观察到用户回访的典型场景。 
+            没有强制推送，页面也尽可能保持轻量，减少加载等待。
+        </p>
+
+        <div class="faq-mini">
+            <details>
+                <summary>❓ 常见疑问 · 快速了解</summary>
+                <p>
+                    <strong>内容更新频率？</strong> 不固定，但以周为单位保持有效输出，避免日更造成信息过浅。<br>
+                    <strong>需要注册吗？</strong> 直接浏览，无需账户。所有内容均开放阅读。<br>
+                    <strong>移动端适配？</strong> 页面采用响应式设计，手机与平板均可流畅使用。
+                </p>
+            </details>
+        </div>
+
+        <p style="margin-top: 1.2rem;">
+            如果你倾向于定期回顾而非一次性浏览，不妨把当前页加入浏览器书签，或者直接记住下面这个地址：
+        </p>
+
+        <p style="margin: 0.8rem 0 0.2rem 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem;">
+            <a href="https://appcn-mksports.com" class="btn-link">MK体育</a>
+            <a href="https://appcn-mksports.com" class="btn-link btn-link-outline">MK体育</a>
+        </p>
+
+        <div class="tagline">
+            — 简洁，可回访，保持信息密度
+        </div>
+
+        <div class="footer-note">
+            · 持续关注 · 不打扰 ·
+        </div>
+    </div>
+</body>
+</html>
